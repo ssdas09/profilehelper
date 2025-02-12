@@ -15,9 +15,9 @@ from email import encoders
 # BODY = "Hello,\n\nPlease find the attached PDF file.\n\nBest regards."
 
 # PDF file to attach
-PDF_PATH = "temp_resume.pdf"
 
-def send_email(gmail_user,to_email,subject,body,password):
+
+def send_email(gmail_user,to_email,subject,body,password,PDF_PATH):
     msg = MIMEMultipart()
     msg["From"] = gmail_user
     msg["To"] = to_email

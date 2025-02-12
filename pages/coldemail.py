@@ -25,7 +25,7 @@ def main():
     # resume_text = extract_text_from_pdf(uploaded_resume)
     if uploaded_resume:
         # Save the uploaded resume temporarily
-        with open(f"{uploaded_resume}", "wb") as f:
+        with open(f"{uploaded_resume.name}", "wb") as f:
             f.write(uploaded_resume.getbuffer())
 
         st.success("Resume uploaded successfully!")
@@ -113,11 +113,12 @@ def main():
                         subject=email['subject'],
                         body=email['body'],
                         password=sender_passkey,
+                        PDF_PATH=uploaded_resume.name
                     )
                     st.success("Email sent successfully!")
 
                     # Clean up
-                    os.remove("temp_resume.pdf")
+                    os.remove(f"{uploaded_resume.name}")
 
                 except Exception as e:
                     st.error(f"Error sending email: {str(e)}")
